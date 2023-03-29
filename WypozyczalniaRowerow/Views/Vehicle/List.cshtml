@@ -1,0 +1,46 @@
+@using System.Drawing
+@model List<VehicleViewModel>
+
+@{
+    ViewData["Title"] = "Lista rowerów";
+}
+<h1>@ViewData["Title"]</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Marka</th>
+        <th>Typ</th>
+        <th>Kolor</th>
+        <th>Przeznaczenie</th>
+        <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var vehicle in Model)
+    {
+        <tr>
+            <td>@vehicle.Id</td>
+            <td>@vehicle.Brand</td>
+            <td>@vehicle.Type</td>
+            <td>@vehicle.Color</td>
+            <td>@vehicle.IntendedUse</td>
+            <td>
+                @Html.ActionLink(
+                    "Szczegóły", 
+                    "Details", 
+                    new
+                    {
+                        Id=vehicle.Id,
+                        Brand=vehicle.Brand,
+                        Type=vehicle.Type,
+                        Color=vehicle.Color,
+                        IntendedUse=vehicle.IntendedUse,
+                        PictureHref=vehicle.PictureHref
+                    }
+                )
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

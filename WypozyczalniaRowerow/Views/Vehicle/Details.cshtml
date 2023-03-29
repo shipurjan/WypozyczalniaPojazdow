@@ -1,0 +1,16 @@
+@model VehicleViewModel
+
+@{
+    ViewData["Title"] = "Opis roweru";
+}
+
+<h1 xmlns="http://www.w3.org/1999/html">Rower @Model.Brand</h1>
+
+<img style="max-width: 400px; width: 100%; height: auto;" class="img-thumbnail" src="@Model.PictureHref"/>
+<table style="max-width: 400px; margin-left: 0;">
+    <tr><th>ID:</th> <td>@Model.Id</td></tr>
+    <tr><th>Marka:</th> <td>@Model.Brand</td></tr>
+    <tr><th>Typ:</th>   <td>@Model.Type</td></tr>
+    <tr><th>Kolor:</th> <td>@Model.Color</td></tr>
+    <tr><th>Przeznaczenie:</th> <td>@Model.IntendedUse</td></tr>
+</table>
