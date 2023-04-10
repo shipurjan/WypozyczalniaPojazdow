@@ -1,6 +1,6 @@
 namespace WypozyczalniaRowerow.Services.VehicleService;
 
-public class VehicleService
+public class VehicleService : IVehicleService
 {
     
 }
