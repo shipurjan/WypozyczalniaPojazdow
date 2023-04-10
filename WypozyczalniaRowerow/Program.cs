@@ -8,8 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseInMemoryDatabase("ATHRentingSystem"));
+
 builder.Services.AddTransient<IVehicleService, VehicleService>();
-//builder.Services.AddTransient<IRentingLocationService, RentingLocationService>();
+builder.Services.AddTransient<IRentingLocationService, RentingLocationService>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
