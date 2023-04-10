@@ -1,6 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using WypozyczalniaRowerow.Data;
+using WypozyczalniaRowerow.Services.RentingLocationService;
+using WypozyczalniaRowerow.Services.VehicleService;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<VehicleContext>(options =>
+    options.UseInMemoryDatabase("ATHRentingSystem"));
+builder.Services.AddTransient<IVehicleService, VehicleService>();
+//builder.Services.AddTransient<IRentingLocationService, RentingLocationService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
