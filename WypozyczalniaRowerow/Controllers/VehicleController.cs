@@ -49,7 +49,7 @@ public class VehicleController : Controller
     [HttpGet]
     public IActionResult Delete(int id)
     {
-        var vehicle = _vehicleService.Get(id);
+        var vehicle = _vehicleService.GetById(id);
         return View(vehicle);
     }
 
@@ -64,14 +64,14 @@ public class VehicleController : Controller
     [HttpGet]
     public IActionResult Details(int id)
     {
-        var vehicle = _vehicleService.Get(id);
+        var vehicle = _vehicleService.GetById(id);
         return View(vehicle);
     }
     
     [HttpGet]
     public IActionResult Edit(int id)
     {
-        var vehicle = _vehicleService.Get(id);
+        var vehicle = _vehicleService.GetById(id);
         return View(vehicle);
     }
     
