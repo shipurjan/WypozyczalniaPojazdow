@@ -17,37 +17,37 @@ public class RentingLocationService : IRentingLocationService
 
     public IQueryable<RentingLocation> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.RentingLocations.AsQueryable<RentingLocation>();
     }
 
     public RentingLocation Get(int id)
     {
-        throw new NotImplementedException();
+      return _context.RentingLocations.FirstOrDefault(r => r.Id == id);
     }
 
     public IQueryable<RentingLocation> FindBy(Expression<Func<RentingLocation, bool>> predicate)
     {
-        throw new NotImplementedException();
+      return _context.RentingLocations.AsQueryable<RentingLocation>().Where(predicate);
     }
 
     public void Add(RentingLocation rentingLocation)
-    {
-        throw new NotImplementedException();
+    { 
+        _context.RentingLocations.Add(rentingLocation);
     }
 
     public void Edit(RentingLocation rentingLocation)
     {
-        throw new NotImplementedException();
+        _context.RentingLocations.Update(rentingLocation);
     }
 
     public void Delete(RentingLocation rentingLocation)
     {
-        throw new NotImplementedException();
+        _context.RentingLocations.Remove(rentingLocation);
     }
 
     public void Save()
     {
-        throw new NotImplementedException();
+        _context.SaveChanges();
     }
 
 }

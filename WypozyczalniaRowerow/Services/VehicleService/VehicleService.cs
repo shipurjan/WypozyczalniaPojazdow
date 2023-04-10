@@ -17,36 +17,36 @@ public class VehicleService : IVehicleService
 
    public IQueryable<Vehicle> GetAll()
    {
-      throw new NotImplementedException();
+      return _context.Vehicles.AsQueryable<Vehicle>();
    }
 
    public Vehicle Get(int id)
    {
-      throw new NotImplementedException();
+      return _context.Vehicles.FirstOrDefault(r => r.Id == id);
    }
 
    public IQueryable<Vehicle> FindBy(Expression<Func<Vehicle, bool>> predicate)
    {
-      throw new NotImplementedException();
+      return _context.Vehicles.AsQueryable<Vehicle>().Where(predicate);
    }
 
    public void Add(Vehicle vehicle)
    {
-      throw new NotImplementedException();
+      _context.Vehicles.Add(vehicle);
    }
 
    public void Edit(Vehicle vehicle)
    {
-      throw new NotImplementedException();
+      _context.Vehicles.Update(vehicle);
    }
 
    public void Delete(Vehicle vehicle)
    {
-      throw new NotImplementedException();
+      _context.Vehicles.Remove(vehicle);
    }
 
    public void Save()
    {
-      throw new NotImplementedException();
+        _context.SaveChanges();
    }
 }
