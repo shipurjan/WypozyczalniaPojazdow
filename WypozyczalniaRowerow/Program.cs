@@ -6,7 +6,7 @@ using WypozyczalniaRowerow.Services.VehicleService;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<VehicleContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseInMemoryDatabase("ATHRentingSystem"));
 builder.Services.AddTransient<IVehicleService, VehicleService>();
 //builder.Services.AddTransient<IRentingLocationService, RentingLocationService>();

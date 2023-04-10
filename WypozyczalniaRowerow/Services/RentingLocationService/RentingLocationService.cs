@@ -8,9 +8,9 @@ namespace WypozyczalniaRowerow.Services.RentingLocationService;
 
 public class RentingLocationService : IRentingLocationService
 {
-    private RentingLocationContext _context;
+    private ApplicationDbContext _context;
 
-    public RentingLocationService(RentingLocationContext context)
+    public RentingLocationService(ApplicationDbContext context)
     {
         _context = context;
     }

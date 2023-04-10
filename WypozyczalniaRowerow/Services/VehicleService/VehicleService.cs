@@ -8,9 +8,9 @@ namespace WypozyczalniaRowerow.Services.VehicleService;
 
 public class VehicleService : IVehicleService
 {
-   private VehicleContext _context;
+   private ApplicationDbContext _context;
 
-   public VehicleService(VehicleContext context)
+   public VehicleService(ApplicationDbContext context)
    {
       _context = context;
    }
