@@ -11,5 +11,4 @@ public class RentingLocationService : RepositoryService<RentingLocation>, IRenti
     public RentingLocationService(ApplicationDbContext context) : base(context)
     {
     }
-    
 }

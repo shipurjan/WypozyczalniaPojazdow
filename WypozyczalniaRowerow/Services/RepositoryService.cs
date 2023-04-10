@@ -15,7 +15,6 @@ public class RepositoryService<T> : IRepositoryService<T> where T : class
         _dbSet = context.Set<T>();
     }
 
-
     public virtual IQueryable<T> GetAll()
     {
         return _dbSet.AsQueryable<T>();
