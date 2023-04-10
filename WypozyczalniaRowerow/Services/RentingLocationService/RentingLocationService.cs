@@ -1,4 +1,6 @@
-using System.Collections.Immutable;
+using System;
+using System.Linq;
+using System.Linq.Expressions;
 using WypozyczalniaRowerow.Data;
 using WypozyczalniaRowerow.Models;
 
@@ -12,11 +14,40 @@ public class RentingLocationService : IRentingLocationService
     {
         _context = context;
     }
-    IQueryable<RentingLocation> GetAll();
-    RentingLocation Get(int id);
-    IQueryable<RentingLocation> FindBy(Expression<Func<RentingLocation, bool>> predicate);
-    void Add(RentingLocation rentingLocation);
-    void Edit(RentingLocation rentingLocation);
-    void Delete(RentingLocation rentingLocation);
-    void Save();
+
+    public IQueryable<RentingLocation> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public RentingLocation Get(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IQueryable<RentingLocation> FindBy(Expression<Func<RentingLocation, bool>> predicate)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Add(RentingLocation rentingLocation)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Edit(RentingLocation rentingLocation)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Delete(RentingLocation rentingLocation)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Save()
+    {
+        throw new NotImplementedException();
+    }
+
 }
