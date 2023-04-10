@@ -1,46 +1,39 @@
-@using System.Drawing
-@model List<Vehicle>
+@model IEnumerable<WypozyczalniaRowerow.Models.Vehicle>
 
 @{
-    ViewData["Title"] = "Lista rowerów";
+    ViewBag.Title = "List";
 }
-<h1>@ViewData["Title"]</h1>
-<table>
-    <thead>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
     <tr>
-        <th>ID</th>
-        <th>Marka</th>
-        <th>Typ</th>
-        <th>Kolor</th>
-        <th>Przeznaczenie</th>
-        <th>Akcje</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th></th>
     </tr>
-    </thead>
-    <tbody>
-    @foreach (var vehicle in Model)
-    {
+
+    @foreach (var item in Model) {
         <tr>
-            <td>@vehicle.Id</td>
-            <td>@vehicle.Brand</td>
-            <td>@vehicle.Type</td>
-            <td>@vehicle.Color</td>
-            <td>@vehicle.IntendedUse</td>
             <td>
-                @Html.ActionLink(
-                    "Szczegóły", 
-                    "Details", 
-                    new
-                    {
-                        Id=vehicle.Id,
-                        Brand=vehicle.Brand,
-                        Type=vehicle.Type,
-                        Color=vehicle.Color,
-                        IntendedUse=vehicle.IntendedUse,
-                        PictureHref=vehicle.PictureHref
-                    }
-                )
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
             </td>
         </tr>
     }
-    </tbody>
+
 </table>

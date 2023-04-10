@@ -14,5 +14,4 @@ public interface IRentingLocationService
     void Edit(RentingLocation rentingLocation);
     void Delete(RentingLocation rentingLocation);
     void Save();
-    
 }
