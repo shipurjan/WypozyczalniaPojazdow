@@ -2,15 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 using WypozyczalniaRowerow.Models;
 using System.Collections.Generic;
 using WypozyczalniaRowerow.Data;
-using WypozyczalniaRowerow.Services.VehicleService;
+using WypozyczalniaRowerow.Services.RentingLocationService;
 
 namespace WypozyczalniaRowerow.Controllers;
 
-public class VehicleController : Controller
+public class RentingLocationController : Controller
 {
-    private readonly IVehicleService _service;
+    private readonly IRentingLocationService _service;
 
-    public VehicleController(IVehicleService service)
+    public RentingLocationController(IRentingLocationService service)
     {
         _service = service;
     }
@@ -18,8 +18,8 @@ public class VehicleController : Controller
     [HttpGet]
     public IActionResult List()
     {
-        var vehicles = _service.GetAll().ToList();
-        return View(vehicles);
+        var locations = _service.GetAll().ToList();
+        return View(locations);
     }
 
     [HttpGet]
@@ -29,9 +29,9 @@ public class VehicleController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(Vehicle vehicle)
+    public IActionResult Create(RentingLocation location)
     {
-        _service.Add(vehicle);
+        _service.Add(location);
         _service.Save();
         
         return View();
@@ -40,14 +40,14 @@ public class VehicleController : Controller
     [HttpGet]
     public IActionResult Delete(int id)
     {
-        var vehicle = _service.GetById(id);
-        return View(vehicle);
+        var location = _service.GetById(id);
+        return View(location);
     }
 
     [HttpPost]
-    public IActionResult Delete(Vehicle vehicle)
+    public IActionResult Delete(RentingLocation location)
     {
-        _service.Delete(vehicle);
+        _service.Delete(location);
         _service.Save();
         return View();
     }
@@ -55,22 +55,22 @@ public class VehicleController : Controller
     [HttpGet]
     public IActionResult Details(int id)
     {
-        var vehicle = _service.GetById(id);
-        return View(vehicle);
+        var location = _service.GetById(id);
+        return View(location);
     }
     
     [HttpGet]
     public IActionResult Edit(int id)
     {
-        var vehicle = _service.GetById(id);
-        return View(vehicle);
+        var location = _service.GetById(id);
+        return View(location);
     }
     
     
     [HttpPost]
-    public IActionResult Edit(Vehicle vehicle)
+    public IActionResult Edit(RentingLocation location)
     {
-        _service.Edit(vehicle);
+        _service.Edit(location);
         _service.Save();
         return View();
     }

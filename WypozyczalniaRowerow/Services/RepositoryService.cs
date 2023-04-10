@@ -21,7 +21,7 @@ public class RepositoryService<T> : IRepositoryService<T> where T : class
         return _dbSet.AsQueryable<T>();
     }
 
-    public virtual T GetById(object id)
+    public virtual T GetById(int id)
     {
         return _dbSet.Find(id);
     }
@@ -36,14 +36,13 @@ public class RepositoryService<T> : IRepositoryService<T> where T : class
         _dbSet.Update(entity);
     }
 
-    public virtual void Delete(object id)
-    {
-        Delete(_dbSet.Find(id));
-    }
-
     public virtual void Delete(T entity)
     {
         _dbSet.Remove(entity);
+    }
+    public virtual void Delete(int id)
+    {
+        Delete(_dbSet.Find(id));
     }
     
     public virtual void Save()
