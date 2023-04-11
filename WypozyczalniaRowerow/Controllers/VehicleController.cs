@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WypozyczalniaRowerow.Models;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using WypozyczalniaRowerow.Data;
 using WypozyczalniaRowerow.Services.VehicleService;
 
@@ -18,7 +19,8 @@ public class VehicleController : Controller
     [HttpGet]
     public IActionResult List()
     {
-        var vehicles = _service.GetAll().ToList();
+        var vehicles = _service.GetAll()
+            .ToList();
         return View(vehicles);
     }
 

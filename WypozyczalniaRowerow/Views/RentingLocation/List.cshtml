@@ -1,4 +1,4 @@
-@model IEnumerable<WypozyczalniaRowerow.Models.Vehicle>
+@model IEnumerable<WypozyczalniaRowerow.Models.RentingLocation>
 
 @{
     ViewBag.Title = "Lista";
@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Brand)
+            @Html.DisplayNameFor(model => model.City)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IntendedTarget)
+            @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>Akcje</th>
     </tr>
@@ -23,10 +23,10 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Brand)
+                @Html.DisplayFor(modelItem => item.City)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IntendedTarget)
+                @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
                 @Html.ActionLink("Edytuj", "Edit", new { id=item.Id }) |
