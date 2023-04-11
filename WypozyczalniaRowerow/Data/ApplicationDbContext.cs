@@ -11,4 +11,12 @@ public class ApplicationDbContext : DbContext
     public DbSet<VehicleType> VehicleTypes { get; set; }
     public DbSet<RentingLocation> RentingLocations { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Vehicle>()
+            .HasOne(_ => _.Type)
+            .WithMany(a => a.Vehicles)
+            .HasForeignKey(p => p.VehicleTypeId);
+    }
 }
