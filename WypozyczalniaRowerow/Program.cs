@@ -99,12 +99,12 @@ using (var context = new ApplicationDbContext(options))
         new Reservation
         {
             Id = 1, ReservationDate = new DateTime(2023, 4, 11, 14, 00, 00), ReservedVehicle = vehicles[0],
-            ClientName = "Jan Bruk"
+            ClientName = "Jan Bruk", RentingLocation = renting_locations[0],
         },
         new Reservation
         {
             Id = 2, ReservationDate = new DateTime(2023, 4, 12, 16, 00, 00), ReservedVehicle = vehicles[1],
-            ClientName = "Anna Truszkowska"
+            ClientName = "Anna Truszkowska", RentingLocation = renting_locations[1],
         },
     };
 
