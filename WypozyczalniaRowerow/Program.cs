@@ -13,11 +13,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 var options = new DbContextOptionsBuilder<ApplicationDbContext>()
     .UseInMemoryDatabase(databaseName: "ATHRentingSystem")
     .Options;
-using (var context = new ApplicationDbContext(options))
-{
+
+using (var context = new ApplicationDbContext(options)) {
     context.Database.EnsureCreated();
     context.SaveChanges();
 }
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddTransient<IVehicleService, VehicleService>();
 builder.Services.AddTransient<IRentingLocationService, RentingLocationService>();

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WypozyczalniaRowerow.Models;
 using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using WypozyczalniaRowerow.Data;
 using WypozyczalniaRowerow.Services.VehicleService;
@@ -10,10 +11,12 @@ namespace WypozyczalniaRowerow.Controllers;
 public class VehicleController : Controller
 {
     private readonly IVehicleService _service;
+    private readonly IMapper _mapper;
 
-    public VehicleController(IVehicleService service)
+    public VehicleController(IVehicleService service, IMapper mapper)
     {
         _service = service;
+        _mapper = mapper;
     }
     
     [HttpGet]
@@ -21,7 +24,8 @@ public class VehicleController : Controller
     {
         var vehicles = _service.GetAll()
             .ToList();
-        return View(vehicles);
+        var mappedVehicles = _mapper.Map<List<Vehicle>>(vehicles);
+        return View(mappedVehicles);
     }
 
     [HttpGet]

@@ -14,5 +14,5 @@ public class Vehicle
     public int VehicleTypeId { get; set; }
     public VehicleType Type { get; set; }
     public int RentingLocationId { get; set; }
-    public RentingLocation? RentingLocation { get; set; }
+    public RentingLocation RentingLocation { get; set; }
 }
