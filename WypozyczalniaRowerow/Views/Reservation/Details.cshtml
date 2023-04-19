@@ -1,4 +1,4 @@
-@model WypozyczalniaRowerow.Models.RentingLocation
+@model WypozyczalniaRowerow.Models.Reservation
 
 @{
     ViewBag.Title = "Szczegóły";
@@ -11,19 +11,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model.ReservationDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.City)
+            @Html.DisplayFor(model => model.ReservationDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Street)
+            @Html.DisplayNameFor(model => model.ClientName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Street)
+            @Html.DisplayFor(model => model.ClientName)
         </dd>
         
     </dl>

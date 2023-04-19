@@ -20,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        
+        <dt>
             @Html.DisplayNameFor(model => model.IntendedTarget)
         </dt>
 
@@ -27,14 +35,38 @@
             @Html.DisplayFor(model => model.IntendedTarget)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleTypeId)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.RentingLocationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RentingLocationId)
+        </dd>
     </dl>
+    
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Usuń" class="btn btn-primary" /> |
-            @Html.ActionLink("Powrót", "List")
+            <input type="submit" value="Usuń" class="btn btn-danger" /> 
+       <a role="button" href='@Url.Action("List")' class="btn btn-secondary">Powrót</a> 
         </div>
     }
 </div>

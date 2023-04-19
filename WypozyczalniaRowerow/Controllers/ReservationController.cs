@@ -1,16 +1,16 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WypozyczalniaRowerow.Models;
-using WypozyczalniaRowerow.Services.VehicleService;
+using WypozyczalniaRowerow.Services.ReservationService;
 
 namespace WypozyczalniaRowerow.Controllers;
 
-public class VehicleController : Controller
+public class ReservationController : Controller
 {
     private readonly IMapper _mapper;
-    private readonly IVehicleService _service;
+    private readonly IReservationService _service;
 
-    public VehicleController(IVehicleService service, IMapper mapper)
+    public ReservationController(IReservationService service, IMapper mapper)
     {
         _service = service;
         _mapper = mapper;
@@ -19,8 +19,8 @@ public class VehicleController : Controller
     [HttpGet]
     public IActionResult List()
     {
-        var vehicles = _service.GetAll().ToList();
-        return View(_mapper.Map<List<Vehicle>>(vehicles));
+        var reservations = _service.GetAll().ToList();
+        return View(_mapper.Map<List<Reservation>>(reservations));
     }
 
     [HttpGet]
@@ -30,11 +30,11 @@ public class VehicleController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(Vehicle vehicle)
+    public IActionResult Create(Reservation reservation)
     {
         if (ModelState.IsValid)
         {
-            _service.Add(_mapper.Map<Vehicle>(vehicle));
+            _service.Add(_mapper.Map<Reservation>(reservation));
             _service.Save();
             return RedirectToAction(nameof(List));
         }
@@ -45,14 +45,14 @@ public class VehicleController : Controller
     [HttpGet]
     public IActionResult Delete(int id)
     {
-        var vehicle = _service.GetById(id);
-        return View(_mapper.Map<Vehicle>(vehicle));
+        var reservation = _service.GetById(id);
+        return View(_mapper.Map<Reservation>(reservation));
     }
 
     [HttpPost]
-    public IActionResult Delete(Vehicle vehicle)
+    public IActionResult Delete(Reservation reservation)
     {
-        _service.Delete(_mapper.Map<Vehicle>(vehicle));
+        _service.Delete(_mapper.Map<Reservation>(reservation));
         _service.Save();
         return RedirectToAction(nameof(List));
     }
@@ -60,25 +60,25 @@ public class VehicleController : Controller
     [HttpGet]
     public IActionResult Details(int id)
     {
-        var vehicle = _service.GetById(id);
-        return View(_mapper.Map<Vehicle>(vehicle));
+        var reservation = _service.GetById(id);
+        return View(_mapper.Map<Reservation>(reservation));
     }
 
     [HttpGet]
     public IActionResult Edit(int id)
     {
-        var vehicle = _service.GetById(id);
-        return View(_mapper.Map<Vehicle>(vehicle));
+        var reservation = _service.GetById(id);
+        return View(_mapper.Map<Reservation>(reservation));
     }
 
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(Vehicle vehicle)
+    public IActionResult Edit(Reservation reservation)
     {
         if (ModelState.IsValid)
         {
-            _service.Edit(_mapper.Map<Vehicle>(vehicle));
+            _service.Edit(_mapper.Map<Reservation>(reservation));
             _service.Save();
             return RedirectToAction(nameof(List));
         }

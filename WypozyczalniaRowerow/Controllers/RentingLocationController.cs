@@ -1,28 +1,26 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WypozyczalniaRowerow.Models;
-using System.Collections.Generic;
-using AutoMapper;
-using WypozyczalniaRowerow.Data;
 using WypozyczalniaRowerow.Services.RentingLocationService;
 
 namespace WypozyczalniaRowerow.Controllers;
 
 public class RentingLocationController : Controller
 {
-    private readonly IRentingLocationService _service;
     private readonly IMapper _mapper;
+    private readonly IRentingLocationService _service;
 
     public RentingLocationController(IRentingLocationService service, IMapper mapper)
     {
         _service = service;
         _mapper = mapper;
     }
-    
+
     [HttpGet]
     public IActionResult List()
     {
-        var locations = _service.GetAll().ToList();
-        return View(_mapper.Map<List<RentingLocation>>(locations));
+        var rentingLocations = _service.GetAll().ToList();
+        return View(_mapper.Map<List<RentingLocation>>(rentingLocations));
     }
 
     [HttpGet]
@@ -32,49 +30,59 @@ public class RentingLocationController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(RentingLocation location)
+    public IActionResult Create(RentingLocation rentingLocation)
     {
-        _service.Add(_mapper.Map<RentingLocation>(location));
+        _service.Add(_mapper.Map<RentingLocation>(rentingLocation));
         _service.Save();
-        
-        return View();
+        return RedirectToAction(nameof(List));
     }
-    
+
     [HttpGet]
     public IActionResult Delete(int id)
     {
-        var location = _service.GetById(id);
-        return View(_mapper.Map<RentingLocation>(location));
+        var rentingLocation = _service.GetById(id);
+        return View(_mapper.Map<RentingLocation>(rentingLocation));
     }
 
     [HttpPost]
-    public IActionResult Delete(RentingLocation location)
+    public IActionResult Delete(RentingLocation rentingLocation)
     {
-        _service.Delete(_mapper.Map<RentingLocation>(location));
-        _service.Save();
+        if (ModelState.IsValid)
+        {
+            _service.Delete(_mapper.Map<RentingLocation>(rentingLocation));
+            _service.Save();
+            return RedirectToAction(nameof(List));
+        }
+
         return View();
     }
 
     [HttpGet]
     public IActionResult Details(int id)
     {
-        var location = _service.GetById(id);
-        return View(_mapper.Map<RentingLocation>(location));
+        var rentingLocation = _service.GetById(id);
+        return View(_mapper.Map<RentingLocation>(rentingLocation));
     }
-    
+
     [HttpGet]
     public IActionResult Edit(int id)
     {
-        var location = _service.GetById(id);
-        return View(_mapper.Map<RentingLocation>(location));
+        var rentingLocation = _service.GetById(id);
+        return View(_mapper.Map<RentingLocation>(rentingLocation));
     }
-    
-    
+
+
     [HttpPost]
-    public IActionResult Edit(RentingLocation location)
+    [ValidateAntiForgeryToken]
+    public IActionResult Edit(RentingLocation rentingLocation)
     {
-        _service.Edit(_mapper.Map<RentingLocation>(location));
-        _service.Save();
+        if (ModelState.IsValid)
+        {
+            _service.Edit(_mapper.Map<RentingLocation>(rentingLocation));
+            _service.Save();
+            return RedirectToAction(nameof(List));
+        }
+
         return View();
     }
 }

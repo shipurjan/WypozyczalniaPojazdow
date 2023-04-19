@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using WypozyczalniaRowerow.Data;
 using WypozyczalniaRowerow.Models;
+using WypozyczalniaRowerow.Services;
 using WypozyczalniaRowerow.Services.RentingLocationService;
+using WypozyczalniaRowerow.Services.ReservationService;
 using WypozyczalniaRowerow.Services.VehicleService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,11 +25,16 @@ using (var context = new ApplicationDbContext(options)) {
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddTransient<IVehicleService, VehicleService>();
+builder.Services.AddTransient<IReservationService, ReservationService>();
 builder.Services.AddTransient<IRentingLocationService, RentingLocationService>();
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddViewOptions(options =>
+    {
+        options.HtmlHelperOptions.ClientValidationEnabled = true;
+    });
 
 var app = builder.Build();
 

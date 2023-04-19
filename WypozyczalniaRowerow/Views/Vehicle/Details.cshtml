@@ -19,6 +19,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        
+        <dt>
             @Html.DisplayNameFor(model => model.IntendedTarget)
         </dt>
 
@@ -27,15 +35,41 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.PictureHref)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PictureHref)
+        </dd>
+        
+        <dt>
             @Html.DisplayNameFor(model => model.VehicleTypeId)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.VehicleTypeId)
         </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.RentingLocationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RentingLocationId)
+        </dd>
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Powrót", "List")
-</p>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+       <a role="button" href='@Url.Action("Edit", values: new { id = Model.Id })' class="btn btn-primary">Edytuj</a> 
+       <a role="button" href='@Url.Action("List")' class="btn btn-secondary">Powrót</a> 
+    </div>
+</div>

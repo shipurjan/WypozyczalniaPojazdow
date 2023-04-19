@@ -62,7 +62,7 @@ public class ApplicationDbContext : DbContext
             .Select(index => new RentingLocation
             {
                 Id = index,
-                Address = $"Willowa {index}",
+                Street = $"Willowa {index}",
                 City = "Bielsko-Biała",
                 
             })
@@ -76,7 +76,7 @@ public class ApplicationDbContext : DbContext
             {
                 Id = index,
                 ClientName = $"{index}Aasd Korr",
-                ReservationDate = DateTime.Today,
+                ReservationDate = DateTime.Now,
                 RentingLocationId = rnd.Next(1,10),
                 VehicleId = rnd.Next(1,10)
             })
