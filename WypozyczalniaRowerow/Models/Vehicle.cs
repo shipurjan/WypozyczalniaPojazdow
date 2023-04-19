@@ -10,6 +10,9 @@ public class Vehicle
     public string? Description { get; set; }
     public string? PictureHref { get; set; }
     
+    
     public int VehicleTypeId { get; set; }
-    public VehicleType? Type { get; set; }
+    public VehicleType Type { get; set; }
+    public int RentingLocationId { get; set; }
+    public RentingLocation? RentingLocation { get; set; }
 }
