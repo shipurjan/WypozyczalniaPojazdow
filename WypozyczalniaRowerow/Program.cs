@@ -24,9 +24,18 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddTransient<IVehicleService, VehicleService>();
 builder.Services.AddTransient<IRentingLocationService, RentingLocationService>();
 
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+    }
+);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

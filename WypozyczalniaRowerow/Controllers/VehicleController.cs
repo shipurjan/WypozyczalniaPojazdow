@@ -3,6 +3,7 @@ using WypozyczalniaRowerow.Models;
 using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using WypozyczalniaRowerow.Data;
 using WypozyczalniaRowerow.Services.VehicleService;
 
@@ -18,7 +19,7 @@ public class VehicleController : Controller
         _service = service;
         _mapper = mapper;
     }
-    
+
     [HttpGet]
     public IActionResult List()
     {
