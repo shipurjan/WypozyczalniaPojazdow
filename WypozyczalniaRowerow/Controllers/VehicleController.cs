@@ -25,8 +25,7 @@ public class VehicleController : Controller
     {
         var vehicles = _service.GetAll()
             .ToList();
-        var mappedVehicles = _mapper.Map<List<Vehicle>>(vehicles);
-        return View(mappedVehicles);
+        return View(_mapper.Map<List<Vehicle>>(vehicles));
     }
 
     [HttpGet]
@@ -38,7 +37,7 @@ public class VehicleController : Controller
     [HttpPost]
     public IActionResult Create(Vehicle vehicle)
     {
-        _service.Add(vehicle);
+        _service.Add(_mapper.Map<Vehicle>(vehicle));
         _service.Save();
         
         return View();
@@ -48,13 +47,13 @@ public class VehicleController : Controller
     public IActionResult Delete(int id)
     {
         var vehicle = _service.GetById(id);
-        return View(vehicle);
+        return View(_mapper.Map<Vehicle>(vehicle));
     }
 
     [HttpPost]
     public IActionResult Delete(Vehicle vehicle)
     {
-        _service.Delete(vehicle);
+        _service.Delete(_mapper.Map<Vehicle>(vehicle));
         _service.Save();
         return View();
     }
@@ -63,21 +62,21 @@ public class VehicleController : Controller
     public IActionResult Details(int id)
     {
         var vehicle = _service.GetById(id);
-        return View(vehicle);
+        return View(_mapper.Map<Vehicle>(vehicle));
     }
     
     [HttpGet]
     public IActionResult Edit(int id)
     {
         var vehicle = _service.GetById(id);
-        return View(vehicle);
+        return View(_mapper.Map<Vehicle>(vehicle));
     }
     
     
     [HttpPost]
     public IActionResult Edit(Vehicle vehicle)
     {
-        _service.Edit(vehicle);
+        _service.Edit(_mapper.Map<Vehicle>(vehicle));
         _service.Save();
         return View();
     }
