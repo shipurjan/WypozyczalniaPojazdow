@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Packaging.Signing;
-using WypozyczalniaRowerow.Data;
+using WypozyczalniaRowerow.Areas.Identity.Data;
 
 namespace WypozyczalniaRowerow.Services;
 

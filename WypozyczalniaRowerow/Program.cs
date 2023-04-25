@@ -1,17 +1,22 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
-using WypozyczalniaRowerow.Data;
+using WypozyczalniaRowerow.Areas.Identity.Data;
 using WypozyczalniaRowerow.Models;
 using WypozyczalniaRowerow.Services;
 using WypozyczalniaRowerow.Services.RentingLocationService;
 using WypozyczalniaRowerow.Services.ReservationService;
 using WypozyczalniaRowerow.Services.VehicleService;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+// var connectionString = builder.Configuration.GetConnectionString("ATHRentingSystem") ?? throw new InvalidOperationException("Connection string 'ATHRentingSystem' not found.");
 
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseInMemoryDatabase("ATHRentingSystem"));
+
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
 var options = new DbContextOptionsBuilder<ApplicationDbContext>()
     .UseInMemoryDatabase(databaseName: "ATHRentingSystem")
@@ -63,5 +68,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();
