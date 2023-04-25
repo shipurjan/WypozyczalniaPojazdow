@@ -26,8 +26,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
          modelBuilder.Entity<RentingLocation>().HasData(GetRentingLocations());
          modelBuilder.Entity<Reservation>().HasData(GetReservations());
 
-         modelBuilder.ApplyConfiguration(new ApplicationUserEntityConfiguration());
-             
          base.OnModelCreating(modelBuilder);
          
          /*
@@ -94,11 +92,3 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
      }
 }
 
-public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<ApplicationUser>
-{
-    public void Configure(EntityTypeBuilder<ApplicationUser> builder)
-    {
-        builder.Property(u => u.FirstName).HasMaxLength(63);
-        builder.Property(u => u.LastName).HasMaxLength(63);
-    }
-}

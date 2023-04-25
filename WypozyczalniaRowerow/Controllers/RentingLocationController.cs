@@ -47,12 +47,9 @@ public class RentingLocationController : Controller
     [HttpPost]
     public IActionResult Delete(RentingLocation rentingLocation)
     {
-        if (ModelState.IsValid)
-        {
-            _service.Delete(_mapper.Map<RentingLocation>(rentingLocation));
-            _service.Save();
-            return RedirectToAction(nameof(List));
-        }
+        _service.Delete(_mapper.Map<RentingLocation>(rentingLocation));
+        _service.Save();
+        return RedirectToAction(nameof(List));
 
         return View();
     }
